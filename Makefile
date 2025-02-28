@@ -9,15 +9,19 @@ CFLAGS = -std=c++17 \
 LDFLAGS = 
 
 
-MMAIN = 
-MODULES = $(MMAIN) 
+MMAIN = $(SOURCEFOLDER)/main.cpp
+MLOGICDIR = $(SOURCEFOLDER)/logic
+MLOGIC = $(MLOGICDIR)/l_task.cpp $(MLOGICDIR)/l_task.hpp
+MLOGICLMATHDIR = $(MLOGICDIR)/l_math
+MLOGICLMATH = $(MLOGICLMATHDIR)/matrix.cpp $(MLOGICLMATHDIR)/matrix.hpp
+MODULES = $(MMAIN) $(MLOGICLMATH) $(MLOGIC)
 
 CPP = $(filter %.cpp,$(MODULES))
 HEADERS = $(filter %.hpp %.h,$(MODULES))
 OBJECTS = $(patsubst %.cpp,%.o,$(CPP))
 
 
-.PHONY: all clean $(BUILDFOLDER) run
+.PHONY: all clean run
 
 all: $(TARGET)
 
