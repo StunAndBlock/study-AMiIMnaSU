@@ -1,6 +1,6 @@
-TARGET = __1
+TARGET = matrix.out
 BUILDFOLDER = build
-SOURCEFOLDER = src
+SOURCEFOLDER =src
 CC = g++
 
 CFLAGS = -std=c++17 \
@@ -9,15 +9,18 @@ CFLAGS = -std=c++17 \
 LDFLAGS = 
 
 
-MMAIN = 
-MODULES = $(MMAIN) 
+MMAIN =$(SOURCEFOLDER)/main.cpp
+MDIRLOGIC =$(SOURCEFOLDER)/logic 
+MDIRMATRIX =$(MDIRLOGIC)/matrix
+MMATRIX =src/logic/matrix/matrix.cpp src/logic/matrix/matrix.hpp
+MODULES =$(MMAIN) $(MMATRIX)
 
-CPP = $(filter %.cpp,$(MODULES))
-HEADERS = $(filter %.hpp %.h,$(MODULES))
-OBJECTS = $(patsubst %.cpp,%.o,$(CPP))
+CPP =$(filter %.cpp,$(MODULES))
+HEADERS =$(filter %.hpp %.h,$(MODULES))
+OBJECTS =$(patsubst %.cpp,%.o,$(CPP))
 
 
-.PHONY: all clean $(BUILDFOLDER) run
+.PHONY: all clean run
 
 all: $(TARGET)
 
